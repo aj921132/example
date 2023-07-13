@@ -1,5 +1,15 @@
-FROM node
-WORKDIR /app
-CMD ["npm", "install"]
-CMD ["npm", "start"]
-EXPOSE 3000
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+  base-directory: build
